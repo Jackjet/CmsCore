@@ -1,0 +1,70 @@
+﻿@{
+    ViewBag.Title = "栏目管理";
+}
+
+<div class="row">
+
+    <div class="col-md-3">
+
+        @Html.Partial("Shared/_QuickMenu")
+
+    </div>
+
+    <div class="col-md-9 ">
+
+        <ol class="breadcrumb">
+            <li><a href="/Manage">管理后台</a></li>
+            <li><a href="/Manage/Category">栏目管理</a></li>
+            <li class="active">查看栏目</li>
+        </ol>
+
+
+        <table class="table table-hover table-striped">
+            <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>类目名称</th>
+                    <th>创建时间</th>
+                    <th>排列顺序</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null)
+                {
+                    for (var i = 0; i < Model.Count; i++)
+                    {
+                        <tr>
+                            <td>@(i + 1)</td>
+                            <td>@Model[i].Title </td>
+                            <td>@Model[i].CreateTime </td>
+                            <td>@Model[i].OrderDesc </td>
+
+                            <td>
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-default">栏目管理</button>
+                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                        <span class="caret"></span>
+                                        <span class="sr-only"></span>
+                                    </button>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li><a href="/Manage/Category/Edit?id=@Model[i].CategoryID">修改</a></li>
+                                        <li><a href="/Manage/Category/Delete?id=@Model[i].CategoryID">删除</a></li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+
+        @if (Model != null && !Model.Any())
+        {
+            <div class="alert alert-info">
+                <strong>提示</strong> 没有查询到记录。
+            </div>
+        }
+
+    </div>
+</div>

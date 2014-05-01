@@ -1,0 +1,21 @@
+﻿标签模板测试
+@using CmsCore.Label
+@using CmsCore.Label.Model
+@{
+
+    var content = LabelManage.Content.GetLists(
+        new ContentLabelGetListsParam
+        {
+            Where = "查询条件Where",
+            Order = "排序条件Order"
+        }
+    );
+
+}
+
+@{
+    foreach (var m in content.Result)
+    {
+        @m.Title <br />
+    }
+}

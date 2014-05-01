@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+
+    <title>@ViewBag.Title</title>
+    <meta charset="utf-8" />
+    <meta name="Keywords" content="@ViewBag.Keywords" />
+    <meta name="Description" content="@ViewBag.Description" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    @Styles.Render("~/Content/manage")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+
+    <div class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a  class="navbar-brand" target="_blank">安装向导</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+
+                    <li class="active"><a href="/Install/Home">第一步：欢迎使用</a></li>
+                    <li ><a href="/Install/Home/InstallDataBase">第二步：数据库配置</a></li>
+                    <li ><a href="/Install/Home/BaseSetting">第三步：基本设置</a></li>
+                    <li @*class="disabled"*@><a href="/Install/Home/InstallSuccess">第四步：安装完成</a></li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="container body-content">
+
+        @RenderBody()
+
+        <hr />
+        <footer class="footer text-muted">
+            <p>CmsCore &copy; @DateTime.Now.Year by mr.wangya@qq.com. 版权所有</p>
+        </footer>
+
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>
